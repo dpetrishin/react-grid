@@ -2,7 +2,7 @@ import * as React from 'react'
 import './grid.css'
 
 import RowTypeEnum from './RowTypeEnum'
-import RowView from './RowView'
+import RowView from './Row'
 
 export interface Props {
     headers: string[];

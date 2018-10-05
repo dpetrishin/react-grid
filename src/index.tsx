@@ -13,7 +13,8 @@ ReactDOM.render(
         headers={["Symbol", "Bid LP", "Bid", "Ask LP", "Ask", "Spread"]}
         rows={
           [
-            ["AUDCAD", "", "0.99206", "", "0.99207", "0.1"]
+            ["AUDCAD", "", "0.99206", "", "0.99207", "0.1"],
+            ["AUDCHF", "", "0.91370", "", "0.91371", "0.1"]
           ]
         }
         />
