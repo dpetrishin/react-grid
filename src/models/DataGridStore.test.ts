@@ -35,6 +35,7 @@ it("data grid model with data is created", () => {
     ["CHFJPY", "span", 105.112, "span", 105.115, 0.3],
     ["EURAUD", "span", 1.35699, "span", 1.35702, 0.3],
     ["EURCAD", "span", 1.34721, "span", 1.34722, 0.1],
+    ["EURCHF", "span", 1.24024, "span", 1.24025, 0.1],
   ];
 
   let store = new DataGridStore(headers, columnTypes, data);
