@@ -1,5 +1,6 @@
 import * as React from 'react'
 import HeaderCell from './HeaderCell';
+import { Guid } from 'guid-typescript';
 
 interface Props {
   row: string[]
@@ -15,7 +16,7 @@ class HeaderRow extends React.Component<Props> {
       <tr>
         {
           this.props.row.map((value) => {
-            return (<HeaderCell value={value} />)
+            return (<HeaderCell key={Guid.create().toString()} value={value} />)
           })
         }
       </tr>

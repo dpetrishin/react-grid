@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import DevTools from 'mobx-react-devtools'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -28,8 +29,34 @@ ReactDOM.render(
   <div className="container">
     <h1 className="mt-5">React grid</h1>
     <DataGrid store={store}/>
+    <DevTools />
+    <div className="card">
+      <div className="card-body">
+        <button type="button" onClick={onAddClicked} className="btn btn-primary">Add row</button>
+        <button type="button" onClick={onUpdateClicked} className="btn btn-success">Update cell</button>
+        <button type="button" onClick={onDeleteClicked} className="btn btn-danger">Delete row</button>
+      </div>
+    </div>
   </div>,
   document.getElementById('root') as HTMLElement
 );
+
+// Additional hardcode methods for testing of grid
+function onAddClicked() {
+  store.AddRow(["EURGBP", "span", 0.85533, "span", 0.85536, 0.3]);
+}
+
+let i = 0;
+
+function onUpdateClicked() {
+  let j = 2;
+
+  store.Rows[i].Cells[j].setValue(2345234);
+  i++;
+}
+
+function onDeleteClicked() {
+  store.DeleteRowByIndex(0);
+}
 
 registerServiceWorker();

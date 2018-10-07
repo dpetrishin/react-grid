@@ -1,14 +1,19 @@
 import { observable } from 'mobx'
+import { Guid } from "guid-typescript";
 
 class CellModel {
   @observable private value: any;
   private type: any;
+  private id: Guid;
 
   constructor(type: any, value: any) {
     this.type = type;
     this.setValue(value);
+    this.id = Guid.create();
+  }
 
-    //console.log(type, value);
+  public get Id(): Guid {
+    return this.id;
   }
 
   public get Value(): any {

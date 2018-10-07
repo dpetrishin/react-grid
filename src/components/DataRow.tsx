@@ -1,16 +1,13 @@
 import * as React from 'react'
-
-
-//import DataCell from './DataCell'
 import DataRowModel from './../models/RowModel'
 import DataCell from './DataCell';
-
+import { observer } from 'mobx-react';
 
 interface Props {
   row: DataRowModel
 }
 
-class DataRow extends React.Component<Props> {
+@observer class DataRow extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
   }
@@ -20,7 +17,7 @@ class DataRow extends React.Component<Props> {
       <tr>
         {
           this.props.row.Cells.map((cell) => {
-            return <DataCell cell={cell} />
+            return <DataCell key={cell.Id.toString()} cell={cell} />
           })
         }
       </tr>

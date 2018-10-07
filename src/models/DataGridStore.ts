@@ -1,5 +1,6 @@
 import { observable } from 'mobx'
 import RowModel from './RowModel'
+import { Guid } from "guid-typescript";
 
 class DataGridStore {
   private headerRow: string[];
@@ -28,6 +29,10 @@ class DataGridStore {
     return this.dataRows;
   }
 
+  public GetRow(id: Guid): RowModel | undefined {
+    return this.Rows.find(value => value.Id == id);
+  }
+
   public AddRow(newRow: any[]): void {
     let rowModel = new RowModel(this.ColumnTypes, newRow);
     this.dataRows.push(rowModel);
@@ -38,6 +43,17 @@ class DataGridStore {
       this.CheckRowLength(newRow);
       this.AddRow(newRow);
     });
+  }
+
+  public DeleteRowByKey(key: Guid): void {
+    const index = this.Rows.findIndex((row) => row.Id == key);
+    if(index > -1) {
+      this.Rows.splice(index, 1);
+    }
+  }
+
+  public DeleteRowByIndex(index: number): void {
+    this.Rows.splice(index, 1);
   }
 
   private AddColumnTypes(columnTypes: any[]): void {

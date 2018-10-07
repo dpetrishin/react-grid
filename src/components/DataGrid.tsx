@@ -6,12 +6,13 @@ import DataGridStore from './../models/DataGridStore'
 
 import HeaderRow from './HeaderRow'
 import DataRow from './DataRow';
+import { observer } from 'mobx-react';
 
 interface Props {
   store: DataGridStore;
 }
 
-class DataGrid extends React.Component<Props> {
+@observer class DataGrid extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
   }
@@ -25,7 +26,7 @@ class DataGrid extends React.Component<Props> {
         <tbody>
           {
             this.props.store.Rows.map((row) => {
-              return (<DataRow row={row} />)
+              return (<DataRow key={row.Id.toString()} row={row} />)
             })
           }
         </tbody>
