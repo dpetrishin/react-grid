@@ -7,14 +7,9 @@ export interface Props {
   value: string
 }
 
-export interface State {
-  isEditing: boolean
-}
-
-@observer class Cell extends React.Component<Props, State> {
+@observer class DataCell extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
-    console.log(this.state);
   }
 
   render() {
@@ -36,4 +31,4 @@ export interface State {
   }
 }
 
-export default Cell;
+export default DataCell;
