@@ -3,43 +3,44 @@ import RowModel from './RowModel'
 
 class DataGridStore {
   private headerRow: string[];
-  private columnTypes: string[];
+  private columnTypes: any[];
   @observable private dataRows: RowModel[];
 
-  constructor(headerRow: string[], columnTypes: string[], dataRows?: string[][]) {
-    console.log('data grid constructor is entered.');
+  constructor(headerRow: string[], columnTypes: any[], dataRows?: any[][]) {
     this.headerRow = headerRow;
     this.AddColumnTypes(columnTypes);
+    this.dataRows = [];
     if (dataRows) {
+      console.log(dataRows);
       this.AddRows(dataRows);
     }
-  }
-
-  public get Headers(): string[] {
-    return this.headerRow;
   }
 
   public get ColumnTypes(): string[] {
     return this.columnTypes;
   }
 
+  public get Headers(): string[] {
+    return this.headerRow;
+  }
+
   public get Rows(): RowModel[] {
     return this.dataRows;
   }
 
-  public AddRow(newRow: string[]): void {
+  public AddRow(newRow: any[]): void {
     let rowModel = new RowModel(this.ColumnTypes, newRow);
     this.dataRows.push(rowModel);
   }
 
-  public AddRows(newRows: string[][]): void {
+  public AddRows(newRows: any[][]): void {
     newRows.forEach((newRow) => {
       this.CheckRowLength(newRow);
       this.AddRow(newRow);
     });
   }
 
-  private AddColumnTypes(columnTypes: string[]): void {
+  private AddColumnTypes(columnTypes: any[]): void {
     this.CheckRowLength(columnTypes);
 
     this.columnTypes = columnTypes;
@@ -53,5 +54,3 @@ class DataGridStore {
 }
 
 export default DataGridStore;
-
-

@@ -1,37 +1,27 @@
 import CellModel  from './CellModel'
-import Cell from '../components/DataCell';
 
 class RowModel {
   private dataCells: CellModel[];
-  private cellTypes: string[];
+  private cellTypes: any[];
 
-  constructor(cellTypes:string[], cells: string[]) {
+  constructor(cellTypes:any[], cells: any[]) {
     this.cellTypes = cellTypes;
+    this.dataCells = [];
     this.AddCells(cells);
   }
 
-  public Cells(): CellModel[] {
+  public get Cells(): CellModel[] {
     return this.dataCells;
   }
 
   private AddCells(cells: string[]) {
     cells.forEach((cell, index) => {
       let expectedCellType: string = this.cellTypes[index];
-      if (this.IsCellHasRightType(cell, expectedCellType)) {
-        let dataCell: CellModel = new CellModel(cell, expectedCellType);
 
-        this.dataCells.push(dataCell);
-      }
+      let dataCell: CellModel = new CellModel(expectedCellType, cell);
+      
+      this.dataCells.push(dataCell);
     });
-  }
-
-  private IsCellHasRightType(value: string, type: string): boolean {
-    if (typeof value === type) {
-      return true;
-    }
-    else {
-      throw new Error("Value is not consistent to provided cell type.");
-    }
   }
 }
 

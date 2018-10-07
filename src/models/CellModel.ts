@@ -2,11 +2,13 @@ import { observable } from 'mobx'
 
 class CellModel {
   @observable private value: any;
-  private type: string;
+  private type: any;
 
-  constructor(type: string, value: any) {
+  constructor(type: any, value: any) {
     this.type = type;
-    this.value = value;
+    this.setValue(value);
+
+    //console.log(type, value);
   }
 
   public get Value(): any {
