@@ -1,5 +1,5 @@
 import CellModel  from './CellModel'
-import Cell from '../components/Cell';
+import Cell from '../components/DataCell';
 
 class RowModel {
   private dataCells: CellModel[];
